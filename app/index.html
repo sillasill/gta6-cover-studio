@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" id="controls">
+    <h1>Neon Coast <span>Cover Studio</span></h1>
+    <p class="tagline">Your photo, a caption, and a poster-grade cover — offline, nothing uploaded.</p>
+
+    <div class="group" id="photosGroup">
+      <h2>1 · Photos</h2>
+      <div class="tray" id="tray"></div>
+      <label class="filebtn">+ Add photos
+        <input id="photo" type="file" accept="image/*" multiple hidden>
+      </label>
+      <p class="hint">Click a photo, then click a panel on the cover to place it there. Drag a panel to reposition, scroll over it to zoom.</p>
+    </div>
+
+    <div class="group">
+      <h2>2 · Layout &amp; grade</h2>
+      <div class="swatches" id="layouts"></div>
+      <div class="swatches" id="grades"></div>
+    </div>
+
+    <div class="group">
+      <h2>3 · Lettering</h2>
+      <label>Title <input id="title" type="text" maxlength="24" value="NEON COAST"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="Golden hour heist"></label>
+      <label>Badge <input id="badge" type="text" maxlength="24" value="EST. 2026"></label>
+      <label>Heat <span class="heat" id="heat"></span></label>
+    </div>
+
+    <div class="group" id="panelGroup">
+      <h2>4 · Selected panel</h2>
+      <p class="hint" id="panelLabel">Panel 1 — click the cover to pick a panel.</p>
+      <label>Zoom <input id="zoom" type="range" min="1" max="3" step="0.05" value="1.15"></label>
+      <label>Pan left–right <input id="panx" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <label>Pan up–down <input id="pany" type="range" min="-1" max="1" step="0.05" value="0"></label>
+    </div>
+
+    <div class="group">
+      <h2>5 · Export</h2>
+      <div class="sizes" id="sizes"></div>
+      <div class="row">
+        <button id="export" type="button">Export PNG</button>
+        <button id="exportAll" type="button" class="ghost">All 3 sizes</button>
+      </div>
+      <div class="row">
+        <button id="undo" type="button" class="ghost">↩ Undo</button>
+        <button id="redo" type="button" class="ghost">↪ Redo</button>
+      </div>
+      <p id="status" role="status"></p>
+    </div>
+  </section>
+
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
+    <p class="stagehint">Live preview — what you see is the PNG you export.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
